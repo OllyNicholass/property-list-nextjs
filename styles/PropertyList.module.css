@@ -1,0 +1,23 @@
+.property_list_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -.5rem;
+  margin-bottom: 1rem;
+}
+
+.property_list_item {
+  flex-basis: 100%;
+  margin: .5rem;
+}
+
+@media (min-width: 600px) {
+  .property_list_item {
+    flex-basis: calc(50% - 1rem);
+  }
+}
+
+@media (min-width: 900px) {
+  .property_list_item {
+    flex-basis: calc(100% / 3 - 1rem);
+  }
+}

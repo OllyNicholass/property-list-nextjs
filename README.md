@@ -16,6 +16,8 @@ We recommend you use a tool like [JSON Server](https://github.com/typicode/json-
 
 ## Running the application
 
+### Locally
+
 1. Install the dependancies
 `npm install`
 
@@ -30,37 +32,28 @@ We recommend you use a tool like [JSON Server](https://github.com/typicode/json-
 OR
 `json-server --watch db.js` (if you've installed json-server globally)
 
-This application runs on two ports; 
+### Docker
+
+1. Setup Network
+   - `docker network create propertylist-net`
+
+2. Build images
+   - `docker build -t propertylist:latest client`
+   - `docker build -t propertylist_api:latest api`
+
+3. Run containers
+   - `docker run -d -p 3000:3000 --network propertylist-net --network-alias propertylist-app --name propertylist propertylist:latest`
+   - `docker run -d  -p 3001:3001 --network propertylist-net --network-alias propertylist-api --name propertylist_api propertylist_api:latest`
+
+This application runs on two ports;
 
 - Application: `3000` (Default)
 - DB/API Server `3001` (Default: `3000` - Changed in `json-server.json`)
 
-### Changing the ports
-
-If you wish to use different ports, or these ports are already in use, just update the commands with the new port. And edit the `API_ENDPOINT` environment variable in the `next.config.js` file with the updated API endpoint.
-
-```json
-{
-  "env": {
-    "API_ENDPOINT": "http://localhost:3001"
-  }
-}
-```
-
-The ports can be overridden using the following commands to compile.
-
-`npm run dev -- -p 3005`
-
-Depening whether you installed JSON Server globally will decide which command to use to start the API Server
-
-`node node_modules/json-server/lib/cli/bin --watch db.js --port 3006`
-OR
-`json-server --watch db.js --port 3006`
-
 ## Todo
 
 - [ ] Tests
-- [ ] Dockerize
+- [ ] Docker Compose?
 
 ---
 

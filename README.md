@@ -24,15 +24,19 @@ We recommend you use a tool like [JSON Server](https://github.com/typicode/json-
 2. Start the client
 `npm run dev`
 
-> Depening whether you installed JSON Server globally will decide which command to use to start the API Server
+3. Install JSON Server globally so you can use it in the CLI
+`npm install -g json-server`
 
-3. Start the server:
-`node node_modules/json-server/lib/cli/bin --watch db.js`
-
-OR
-`json-server --watch db.js` (if you've installed json-server globally)
+4. Start the server:
+`json-server --watch db.js`
 
 ### Docker
+
+#### Docker compose
+
+1. `docker compose up -d`
+
+#### Manual
 
 1. Setup Network
    - `docker network create propertylist-net`
@@ -53,7 +57,6 @@ This application runs on two ports;
 ## Todo
 
 - [ ] Tests
-- [ ] Docker Compose?
 
 ---
 

@@ -1,0 +1,33 @@
+version: '3.4'
+
+services:
+
+  propertylist_api:
+    build: ./api
+    ports:
+      - '${API_PORT}:${API_PORT}'
+    expose:
+      - ${API_PORT}
+    networks:
+      - propertylist-net
+    container_name: ${API_CONTAINER_NAME}
+    image: '${API_CONTAINER_NAME}:latest'
+
+  propertylist:
+    build: ./client
+    ports:
+      - '${CLIENT_PORT}:${CLIENT_PORT}'
+    expose:
+      - ${CLIENT_PORT}
+    networks:
+      - propertylist-net
+    depends_on:
+      - ${API_CONTAINER_NAME}
+    environment:
+      - API_CONTAINER_NAME
+      - API_PORT
+    container_name: propertylist
+    image: 'propertylist:latest'
+
+networks:
+  propertylist-net:

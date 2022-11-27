@@ -1,4 +1,4 @@
-const webpack = require('webpack')
+const webpack = require('webpack');
 
 /** @type {import('next').NextConfig} */
 module.exports = {
@@ -7,6 +7,6 @@ module.exports = {
     domains: ['images.unsplash.com'],
   },
   env: {
-    API_ENDPOINT: 'http://localhost:3001'
+    API_ENDPOINT: `http://${process.env.API_CONTAINER_NAME}:${process.env.API_PORT}`
   }
 }
